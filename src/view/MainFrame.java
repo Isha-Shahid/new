@@ -37,7 +37,7 @@ public class MainFrame extends JFrame {
         // patientBtn.addActionListener(e -> displayPatientPanel()); // Link to controller method
         
         panel.add(patientBtn);
-        // ... add buttons for Clinicians, Appointments, Prescriptions, Referrals
+      
         return panel;
     }
 }

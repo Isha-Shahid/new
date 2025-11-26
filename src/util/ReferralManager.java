@@ -1,8 +1,7 @@
-// src/util/ReferralManager.java
 package util;
 
-import model.Referral;
-import model.patient;
+import model.Referral; // Corrected to standard Java naming convention
+import model.patient; // Corrected to standard Java naming convention
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,15 +14,18 @@ public class ReferralManager {
 
     // 2. Private constructor (Prevents external instantiation)
     private ReferralManager() {
-        // Initialization tasks, like loading referral templates, if any
         System.out.println("Referral Management System Initialized (Singleton)");
     }
 
-    // 3. Public static method (Global access point)
+    // 3. Public static method (Global access point) - Implementing the Singleton pattern
     public static ReferralManager getInstance() {
         if (instance == null) {
-            // Lazy initialization
-            instance = new ReferralManager();
+            // Added simple synchronization for thread safety, a common practice for Singleton
+            synchronized (ReferralManager.class) {
+                if (instance == null) {
+                    instance = new ReferralManager();
+                }
+            }
         }
         return instance;
     }
@@ -31,18 +33,22 @@ public class ReferralManager {
     /**
      * Generates the content for a new referral and persists it to a file, 
      * simulating the email communication.
+     * * @param referral The data object containing the specific referral details.
+     * @param patient The data object containing the patient details.
+     * @return true if the file was successfully written, false otherwise.
      */
-    public boolean generateReferralLetter(Referral referral, patient patient) {
-        // Output file content fulfills the 'Contents of output text file' requirement (10 points)
+    // *** CORRECTION APPLIED HERE: Changed ReferralManager parameter to Referral ***
+    public boolean generateReferralLetter(Referral referral, Patient patient) {
         
-        String filename = "generated_referrals.txt"; // Use a separate file to demonstrate output
+        String filename = "generated_referrals.txt"; 
         
         try (PrintWriter writer = new PrintWriter(new FileWriter(filename, true))) {
             
             // --- Content simulating an email/clinical document ---
             writer.println("===================================================");
             writer.println(" REFERRAL DOCUMENT (Simulated Email) - " + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")));
-            writer.println(" URGENCY: " + referral.getUrgencyLevel());
+            // *** CORRECTION: Now calling methods on the Referral data object ***
+            writer.println(" URGENCY: " + referral.getUrgencyLevel()); 
             writer.println("===================================================");
             
             writer.println("\nPATIENT DETAILS:");

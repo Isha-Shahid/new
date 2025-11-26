@@ -1,14 +1,15 @@
-// src/controller/MainController.java
+
 package controller;
 
 import model.DataStore;
 import model.patient;
 import view.MainFrame;
 import javax.swing.SwingUtilities;
+import java.util.List;
 
 public class MainController {
     private DataStore dataStore;
-    private MainFrame view;
+    private MainFrame controller;
 
     public MainController() {
         this.dataStore = new DataStore();
@@ -16,7 +17,7 @@ public class MainController {
         this.dataStore.loadAllData(); 
         
         // 2. Initialize the view and pass this controller instance
-        this.view = new MainFrame(this); 
+        this.controller = new MainFrame(this); 
     }
 
     // Public method for the GUI to call when it needs patient data

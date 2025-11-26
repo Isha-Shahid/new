@@ -19,7 +19,7 @@ public class patient extends user {
     private String registrationDate;
 
     // Association: Patient to Appointments (Composition/Aggregation)
-    private List<Appointment> appointments;
+    private List<appointment> appointments;
 
     // Constructor
     public patient(String userId, String firstName, String lastName, String dateOfBirth, String phone, String email,
@@ -55,11 +55,11 @@ public class patient extends user {
     }
     
     // Method to fulfill the diagram's relationship: Patient to Appointments
-    public List<Appointment> getAppointments() {
+    public List<appointment> getAppointments() {
         return appointments;
     }
 
-    public void addAppointment(Appointment appointment) {
+    public void addAppointment(appointment appointment) {
         this.appointments.add(appointment);
     }
 }

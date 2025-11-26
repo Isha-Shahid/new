@@ -10,7 +10,7 @@ import java.util.List;
 public class FileHandler {
 
     // Method to load all patients from the CSV file
-    public static void loadPatients(String filePath, List<Patient> patientList) {
+    public static void loadPatients(String filePath, List<patient> patientList) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
             br.readLine(); // Skip header row
@@ -18,7 +18,7 @@ public class FileHandler {
                 String[] values = line.split(",");
                 // Assuming the CSV columns match the Patient constructor order
                 if (values.length >= 10) { 
-                    Patient patient = new Patient(
+                    patient patient = new patient(
                         values[0], // userId
                         values[1], // firstName
                         values[2], // lastName
